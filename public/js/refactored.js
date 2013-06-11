@@ -23,16 +23,11 @@ function Game(player1, player2){
 
   this.onKeyUp= function(keypress){
     x ++;
+    players = { 80 : { name: "player2", passIn: player2}, 81 : { name: "player1", passIn: player1 } }
     if (x === 1) {
       this.start();
     };
-
-    if (keypress === 81) {
-      this.render('player1', player1);
-    };
-    if (keypress === 80) {
-      this.render('player2', player2);
-    };
+    this.render(players[keypress].name, players[keypress].passIn);
   };
 
   Game.prototype.render=function(player, initials){
@@ -40,12 +35,7 @@ function Game(player1, player2){
     currentCol.removeClass('active');
     currentCol.next().addClass('active');
     this.checkStatus(currentCol.next());
-    if (this.checkStatus(currentCol.next()) === 'done'){
-      this.winner = initials;
-      console.log(this.winner);
-      this.sendToDb(this.winner, this.race_time);
-      this.updatePage();
-    };
+    this.winCondition(currentCol.next(), initials);
   };
 
   Game.prototype.checkStatus=function(nextCol){
@@ -54,6 +44,15 @@ function Game(player1, player2){
       this.calcTime();
       console.log(this.race_time);
       return "done";
+    };
+  };
+
+  Game.prototype.winCondition=function(nextCol, initials) {
+    if (this.checkStatus(nextCol) === 'done'){
+      this.winner = initials;
+      console.log(this.winner);
+      this.sendToDb(this.winner, this.race_time);
+      this.updatePage();
     };
   };
 
