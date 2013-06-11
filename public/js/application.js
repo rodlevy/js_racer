@@ -26,6 +26,8 @@ $(document).ready(function() {
         var race_time = (end - start) / 1000
         $('.winner h2').text('Player one rocks!!! ' + race_time + ' seconds! You so speeeeeedy!' );
         $('.winner').show();
+        var data = { 'time': race_time, 'winner': player1_id };
+        save_to_db(data);
       }
     }
     else if (event.which === 80) {
@@ -41,7 +43,6 @@ $(document).ready(function() {
         $('.winner h2').text('Player two rocks!!! ' + race_time + ' seconds! You so speeeeeedy!' );
         $('.winner').show();
         var data = { 'time': race_time, 'winner': player2_id };
-        console.log(data);
         save_to_db(data);
       }
     }
