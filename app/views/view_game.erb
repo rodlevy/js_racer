@@ -1,0 +1,6 @@
+<h1>Why Do You Care?</h1>
+
+<p>Date: <%= @game.updated_at %></p>
+
+<p>Winner: <%= Player.find(@game.winner_id).initials %></p>
+<p>Time: <%= @game.time %> seconds</p>
