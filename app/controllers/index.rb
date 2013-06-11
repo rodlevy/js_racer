@@ -25,10 +25,9 @@ end
 post '/save_game' do
   time = params['time']
   winner = params['winner']
-  # Game.last.time = time.to_i
+  player_id = Player.find_by_initials(winner).id
   Game.last.update_attribute(:time, time.to_f.round(3))
-  Game.last.update_attribute(:winner_id, winner.to_i)
-  # Game.last.winner_id = params['winner']
+  Game.last.update_attribute(:winner_id, player_id)
 end
 
 get '/game/:game_id' do

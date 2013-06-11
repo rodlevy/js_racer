@@ -3,7 +3,7 @@
 
 <div class="container">
   <table class="racer_table">
-    <tr id="player1_strip">
+    <tr id="player1_strip" class='<%=@player1.initials%>'>
       <td class="active"></td>
       <td></td>
       <td></td>
@@ -19,7 +19,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td id="finish_line1"></td>
+      <td id="finish_line"></td>
     </tr>
     <tr class="gutter">
       <td></td>
@@ -27,7 +27,7 @@
       <td></td>
       <td></td>
     </tr>
-    <tr id="player2_strip">
+    <tr id="player2_strip" class='<%=@player2.initials%>'>
       <td class="active"></td>
       <td></td>
       <td></td>
@@ -43,7 +43,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td id="finish_line2"></td>
+      <td id="finish_line"></td>
     </tr>
   </table>
   
